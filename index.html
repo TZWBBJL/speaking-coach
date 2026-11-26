@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="theme-color" content="#f6f3ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>开口练 · 30 天口语训练</title>
+<style>
+:root{
+  --bg:#f6f3ec; --card:#fffdf8; --ink:#23271f; --muted:#727768; --line:#e7e1d3;
+  --green:#2f6f5e; --green-2:#3f8a72; --green-soft:#e8f1ec;
+  --amber:#b8792f; --amber-soft:#f8eee0; --red:#b4483c; --blue:#3a6ea5;
+  --radius:20px; --shadow:0 1px 2px rgba(40,45,35,.05),0 8px 24px rgba(40,45,35,.06);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit;font-size:inherit;color:inherit;border:0;background:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p{margin:0}
+.phone{max-width:560px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--bg)}
+
+/* ---------- top ---------- */
+.top{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(14px + env(safe-area-inset-top)) 20px 10px;
+  background:linear-gradient(var(--bg) 72%,rgba(246,243,236,0));
+}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.5px;font-size:17px}
+.brand .mark{width:26px;height:26px;border-radius:9px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:13px}
+.daychip{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);padding:4px 11px;border-radius:999px}
+
+/* ---------- view ---------- */
+.view{flex:1;padding:6px 16px 108px;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:14px}
+.card.tight{padding:14px 16px}
+.sec-title{display:flex;align-items:center;justify-content:space-between;margin:22px 4px 10px}
+.sec-title h2{font-size:15px;font-weight:700;letter-spacing:.3px}
+.sec-title span{font-size:12px;color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.tiny{font-size:12px}
+.center{text-align:center}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;border-radius:26px;padding:22px 20px 18px;color:#fff;
+  background:linear-gradient(140deg,#2c6a59 0%,#347a65 55%,#4a8f77 100%);
+  box-shadow:0 14px 34px rgba(47,111,94,.28);margin-bottom:16px;
+}
+.hero:after{content:"";position:absolute;right:-46px;top:-58px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero:before{content:"";position:absolute;right:26px;bottom:-70px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06)}
+.hero .kicker{font-size:12px;letter-spacing:2px;opacity:.75;text-transform:uppercase}
+.hero h1{font-size:25px;line-height:1.35;margin:7px 0 8px;font-weight:700;letter-spacing:.5px}
+.hero .goal{font-size:13.5px;opacity:.86;line-height:1.6;max-width:88%}
+.hero .meta{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.pill{font-size:12px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(4px)}
+.hero .cta{
+  margin-top:18px;width:100%;background:#fff;color:var(--green);font-weight:700;border-radius:15px;
+  padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:16px;
+  transition:transform .12s;
+}
+.hero .cta:active{transform:scale(.985)}
+.hero .progressline{margin-top:16px;height:5px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden}
+.hero .progressline i{display:block;height:100%;background:#f3e3b8;border-radius:99px;transition:width .5s}
+.hero .progtext{display:flex;justify-content:space-between;font-size:11.5px;opacity:.75;margin-top:7px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:14px;padding:12px 18px;font-weight:600;font-size:15px;transition:transform .12s,background .2s;border:1px solid transparent}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--green);color:#fff;box-shadow:0 6px 16px rgba(47,111,94,.22)}
+.btn.ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn.soft{background:var(--green-soft);color:var(--green)}
+.btn.block{width:100%}
+.btn.danger{background:#fbeeec;color:var(--red)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+
+/* ---------- stats / rows ---------- */
+.statrow{display:flex;gap:10px}
+.stat{flex:1;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 10px;text-align:center}
+.stat b{display:block;font-size:20px;line-height:1.3;font-variant-numeric:tabular-nums}
+.stat span{font-size:11.5px;color:var(--muted)}
+.row{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .grow{flex:1;min-width:0}
+.row .t{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .s{font-size:12px;color:var(--muted);margin-top:2px}
+.dnum{width:34px;height:34px;flex:none;border-radius:11px;display:grid;place-items:center;font-size:13px;font-weight:700;background:var(--green-soft);color:var(--green)}
+.dnum.done{background:var(--green);color:#fff}
+.dnum.lock{background:#efece3;color:#a5a99b}
+
+/* ---------- course ---------- */
+.mod{margin-bottom:16px}
+.modhead{display:flex;align-items:center;gap:11px;padding:6px 4px 10px}
+.modhead .bar{width:4px;height:30px;border-radius:4px;background:var(--green)}
+.modhead h3{font-size:16px;font-weight:700}
+.modhead p{font-size:12px;color:var(--muted)}
+.modhead .range{margin-left:auto;font-size:11px;color:var(--muted)}
+.lessons{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2px 14px;box-shadow:var(--shadow)}
+.lessons .row{cursor:pointer}
+.tag{font-size:10.5px;padding:2px 7px;border-radius:6px;background:#f1eee5;color:var(--muted);margin-left:6px;vertical-align:1px}
+.score-mini{font-size:12px;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums}
+
+/* ---------- session ---------- */
+.overlay{position:fixed;inset:0;z-index:60;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;animation:slideup .3s cubic-bezier(.22,.9,.3,1)}
+.overlay[hidden]{display:none}
+@keyframes slideup{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
+.sess{max-width:560px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:calc(10px + env(safe-area-inset-top)) 18px calc(24px + env(safe-area-inset-bottom))}
+.sesshead{display:flex;align-items:center;gap:12px;padding:4px 0 14px}
+.iconbtn{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none}
+.iconbtn svg{width:18px;height:18px;stroke:var(--ink);stroke-width:1.8;fill:none;stroke-linecap:round}
+.sesshead .grow{flex:1}
+.sesshead .step{font-size:11.5px;color:var(--muted);letter-spacing:1px}
+.sesshead .ttl{font-size:15px;font-weight:700}
+.steps{display:flex;gap:5px;margin-bottom:18px}
+.steps i{height:3px;flex:1;border-radius:99px;background:#e3ddd0}
+.steps i.on{background:var(--green)}
+
+.sess h2.big{font-size:22px;line-height:1.4;letter-spacing:.4px;margin-bottom:8px}
+.goalbox{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.skillbox{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin-bottom:14px}
+.skillbox h4{font-size:12px;letter-spacing:1.5px;color:var(--green);margin-bottom:8px;font-weight:700}
+.skillbox ul{margin:0;padding-left:18px}
+.skillbox li{font-size:14px;line-height:1.75;margin-bottom:2px}
+.phrase{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:#4c5346;padding:7px 0;border-bottom:1px dashed var(--line)}
+.phrase:last-child{border-bottom:0}
+.phrase b{color:var(--green);font-weight:700}
+.taskbox{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:14px;padding:14px 16px;font-size:14.5px;line-height:1.75;margin-bottom:14px}
+.taskbox .lb{font-size:11px;letter-spacing:1.5px;color:var(--amber);font-weight:700;margin-bottom:4px}
+details.hint{background:#fbf8f0;border:1px dashed #ddd3bd;border-radius:13px;padding:10px 14px;margin-bottom:12px;font-size:13.5px;color:#5d6257}
+details.hint summary{font-weight:600;color:var(--amber);cursor:pointer;list-style:none}
+details.hint summary::-webkit-details-marker{display:none}
+details.hint p{margin:7px 0 0;line-height:1.7}
+.demo{font-size:14px;line-height:1.85;color:#41473c;background:var(--green-soft);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.demo .lb{font-size:11px;letter-spacing:1.5px;color:var(--green);font-weight:700;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center}
+.speakbtn{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:var(--green);background:#fff;border-radius:99px;padding:3px 9px;font-weight:600}
+
+.sessfoot{margin-top:auto;padding-top:20px}
+
+/* timer */
+.timerwrap{text-align:center;padding:22px 0 10px}
+.timer{font-size:56px;font-weight:200;letter-spacing:2px;font-variant-numeric:tabular-nums;line-height:1.1}
+.timer.over{color:var(--amber)}
+.timersub{font-size:12.5px;color:var(--muted);letter-spacing:.5px}
+.recwrap{display:flex;flex-direction:column;align-items:center;gap:16px;padding:26px 0 10px}
+.recbtn{width:96px;height:96px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 10px rgba(47,111,94,.1),0 10px 26px rgba(47,111,94,.3);transition:all .2s}
+.recbtn.stop{background:#b4483c;box-shadow:0 0 0 10px rgba(180,72,60,.1),0 10px 26px rgba(180,72,60,.3)}
+.recbtn svg{width:34px;height:34px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round}
+.recbtn .dot{width:26px;height:26px;border-radius:7px;background:#fff}
+.pulse{animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 8px rgba(180,72,60,.12)}50%{box-shadow:0 0 0 18px rgba(180,72,60,.03)}}
+.live{min-height:78px;max-height:150px;overflow-y:auto;font-size:14.5px;line-height:1.8;color:#4c5346;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;width:100%}
+.live:empty:before{content:"开始说话后，这里会出现实时文字……";color:#a8ac9f}
+.live .interim{color:#a8ac9f}
+.bartarget{height:4px;background:#e3ddd0;border-radius:99px;overflow:hidden;width:100%;margin-top:4px}
+.bartarget i{display:block;height:100%;background:var(--green);width:0;transition:width .2s linear}
+
+/* result */
+.scorewrap{display:flex;align-items:center;gap:18px;margin:6px 0 16px}
+.ring{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;flex:none;position:relative}
+.ring:after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--card)}
+.ring .num{position:relative;z-index:1;font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+.ring .num small{font-size:11px;font-weight:500;color:var(--muted)}
+.scoretxt h3{font-size:19px;margin-bottom:3px}
+.scoretxt p{font-size:13px;color:var(--muted);line-height:1.6}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+.metric{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 13px}
+.metric .k{font-size:11.5px;color:var(--muted)}
+.metric .v{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.4}
+.metric .v small{font-size:11px;font-weight:500;color:var(--muted);margin-left:2px}
+.metric .c{font-size:11px;margin-top:2px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chipx{font-size:12.5px;padding:5px 10px;border-radius:9px;background:#f1eee5;color:#8b8f80}
+.chipx.hit{background:var(--green-soft);color:var(--green);font-weight:600}
+.chipx.miss{background:#fbeeec;color:#b46a5e}
+.transcript{font-size:14px;line-height:1.85;color:#454b3f;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 15px;max-height:190px;overflow-y:auto;white-space:pre-wrap}
+.selfrow{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)}
+.selfrow:last-child{border-bottom:0}
+.selfrow .lb{font-size:14px}
+.stars{display:flex;gap:5px}
+.star{width:28px;height:28px;border-radius:9px;background:#f1eee5;display:grid;place-items:center;font-size:12px;color:#a5a99b;font-weight:600}
+.star.on{background:var(--green);color:#fff}
+textarea.note{width:100%;min-height:70px;resize:vertical;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 13px;font-family:inherit;font-size:14px;line-height:1.7;color:var(--ink);outline:none}
+textarea.note:focus{border-color:#bcd3c8}
+.selfnote{font-size:11.5px;color:var(--muted);margin-top:5px}
+
+/* records */
+.bars{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;height:92px;padding:6px 2px 0}
+.barcol{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.barcol .bar{width:100%;max-width:26px;border-radius:6px 6px 3px 3px;background:#dfe9e3;min-height:3px;transition:height .5s}
+.barcol .bar.has{background:var(--green-2)}
+.barcol .d{font-size:10.5px;color:var(--muted)}
+.rec{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.rec:last-child{border-bottom:0}
+.rec .sc{width:42px;height:42px;border-radius:13px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none;font-variant-numeric:tabular-nums}
+.rec .sc.low{background:var(--amber-soft);color:var(--amber)}
+.rec .info{flex:1;min-width:0}
+.rec .info b{font-size:14px;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rec .info span{font-size:11.5px;color:var(--muted)}
+.empty{text-align:center;padding:44px 20px;color:var(--muted);font-size:14px}
+.empty .ico{font-size:34px;margin-bottom:8px;opacity:.5}
+
+/* guide */
+.guide h3{font-size:15px;margin-bottom:8px}
+.guide p,.guide li{font-size:14px;line-height:1.85;color:#454b3f}
+.guide ol,.guide ul{padding-left:20px;margin:6px 0}
+.guide .kbd{font-family:ui-monospace,monospace;background:#f1eee5;border-radius:5px;padding:1px 5px;font-size:12.5px}
+.callout{background:var(--amber-soft);border-radius:12px;padding:11px 14px;font-size:12.5px;color:#7a5a2c;line-height:1.7;margin-top:8px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,14px);background:rgba(30,38,30,.92);color:#fff;font-size:13.5px;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:all .25s;z-index:99;max-width:82%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* tabbar */
+.tabbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:center;
+  max-width:560px;margin:0 auto;
+  padding:8px 12px calc(8px + env(safe-area-inset-bottom));
+  background:linear-gradient(rgba(246,243,236,0),rgba(246,243,236,.92) 34%,var(--bg));
+}
+.tabbar a{flex:1;max-width:120px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0 4px;font-size:10.5px;color:#989d90;border-radius:14px;transition:color .2s}
+.tabbar a svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tabbar a.on{color:var(--green);font-weight:600}
+.tabbar a.on svg{stroke-width:2}
+
+@media (min-width:600px){
+  body{background:#ece8de}
+  .phone{border-left:1px solid #e2dccd;border-right:1px solid #e2dccd;box-shadow:0 0 60px rgba(0,0,0,.05)}
+}
+
+</style>
+</head>
+<body>
+<div class="phone">
+  <header class="top" id="top"></header>
+  <main class="view" id="view"></main>
+  <nav class="tabbar" id="tabbar">
+    <a href="#today" data-tab="today"><svg viewBox="0 0 24 24"><path d="M4 12.5 12 5l8 7.5"/><path d="M6.5 11v8h11v-8"/></svg><span>今天</span></a>
+    <a href="#course" data-tab="course"><svg viewBox="0 0 24 24"><path d="M4 5.5h6a2 2 0 0 1 2 2V19a2 2 0 0 0-2-2H4z"/><path d="M20 5.5h-6a2 2 0 0 0-2 2V19a2 2 0 0 1 2-2h6z"/></svg><span>课程</span></a>
+    <a href="#records" data-tab="records"><svg viewBox="0 0 24 24"><path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19H2"/></svg><span>记录</span></a>
+    <a href="#guide" data-tab="guide"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><path d="M12 7.8v.2"/></svg><span>指南</span></a>
+  </nav>
+</div>
+<div class="overlay" id="overlay" hidden></div>
+<div class="toast" id="toast"></div>
+<script>
+/* 30 天口语训练课程数据 */
+window.MODULES = [
+  { id: 1, title: '说清楚', sub: '敢开口，把一件事讲明白', color: '#2f6f5e', range: '第 1–8 天' },
+  { id: 2, title: '问到位', sub: '会提问，把需求问准确', color: '#3a6ea5', range: '第 9–15 天' },
+  { id: 3, title: '讲重点', sub: '会汇报，结论先行', color: '#a2622f', range: '第 16–23 天' },
+  { id: 4, title: '拿结果', sub: '会沟通，推动事情发生', color: '#8a4b6b', range: '第 24–30 天' }
+];
+
+window.WARMUPS = [
+  { name: '开口热身', text: '红鲤鱼与绿鲤鱼与驴，红鲤鱼与绿鲤鱼与驴。', tip: '慢一点，每个字咬清楚，连续三遍。' },
+  { name: '唇舌热身', text: '八百标兵奔北坡，炮兵并排北边跑。', tip: '嘴唇用力，不要含糊带过。' },
+  { name: '气息热身', text: '（深吸气）数枣：一个枣、两个枣、三个枣……一口气数到二十。', tip: '用肚子吸气，声音落在气息上。' },
+  { name: '语速热身', text: '四是四，十是十，十四是十四，四十是四十。', tip: '先慢后快，快而不乱。' },
+  { name: '咬字热身', text: '黑化肥发灰会挥发，灰化肥挥发会发黑。', tip: '每个"发"都要送气。' },
+  { name: '音量热身', text: '“大家好，我今天想讲三件事。”', tip: '用会议室最后一排能听清的音量说三遍。' },
+  { name: '表情热身', text: '微笑着说出：“这个想法很有意思，我想多听你说两句。”', tip: '嘴角先起来，声音会跟着变暖。' },
+  { name: '停顿热身', text: '“这件事（停一秒）我有一个不同的看法（停一秒）想和大家讨论。”', tip: '停顿是自信，不是忘词。' }
+];
+
+window.LESSONS = [
+  {
+    day: 1, title: '30 秒自我介绍', tag: '破冰',
+    goal: '让对方在 30 秒内记住：你是谁、在做什么、今天为什么在这儿。',
+    skill: [
+      '一句话身份：姓名 + 角色/负责的事',
+      '一句话价值：你帮谁解决什么问题',
+      '一句话钩子：今天来的目的或想认识的人'
+    ],
+    phrases: ['我是……，在……负责……', '简单说，我的工作是帮……', '今天来，主要是想……'],
+    task: '假设你在一场跨部门会议上第一次发言。用 30 秒介绍自己，并说明你今天参会的目的是什么。',
+    prep: 20, speak: 45,
+    must: [['我是', '我叫'], ['负责', '在做', '主要'], ['希望', '想', '目的']],
+    hints: ['不要从简历讲起，从"对方为什么需要知道"讲起。', '把"我负责 XX"换成"我帮谁解决什么问题"。'],
+    demo: '各位好，我是李然，在客户成功部负责华东区的大客户。简单说，我的工作是帮客户把产品真正用起来。最近我在推进一个续约项目，发现交付和销售的信息经常对不齐。今天来，主要是想和大家定一个每周同步的机制。',
+    structure: true
+  },
+  {
+    day: 2, title: '讲清一件事', tag: '叙事',
+    goal: '让不在场的人，30 秒还原事情经过和结果。',
+    skill: ['先给一句话结论：什么事、什么结果', '按时间线只讲 3 个关键节点', '结尾说影响和下一步'],
+    phrases: ['简单说，这件事是……', '时间线是这样的：……', '目前的影响是……，下一步……'],
+    task: '讲一件你最近处理过的小事（一次故障、一次客户投诉、一次活动），60 秒讲清经过和结果。',
+    prep: 20, speak: 60,
+    must: [['结果', '最后', '导致'], ['一开始', '当时', '先'], ['下一步', '后来', '目前']],
+    hints: ['细节只留能影响结果的那几个。', '不要从"那天早上我打开电脑"开始。'],
+    demo: '简单说，上周五的客户投诉，最后在当天下午解决了。时间线是这样：上午十点客户发现报表数据和后台对不上，一开始我们以为是口径问题，查了两小时，发现是凌晨的一次配置改动漏了同步。我们回滚配置、补跑数据，下午三点和客户确认恢复正常。目前的影响是客户要求加一次数据校验，下一步我周五前把校验加进流程。',
+    structure: true
+  },
+  {
+    day: 3, title: '说明一个流程', tag: '说明',
+    goal: '让别人听完就能照着做，不用再来问你。',
+    skill: ['先总后分：一共几步', '每步用动词开头，一句话一步', '主动标出易错点和判断条件'],
+    phrases: ['这个流程一共分三步。', '第一步……第二步……第三步……', '注意，如果……就要……'],
+    task: '向新同事说明你工作中一个固定流程（报销、上线、审批都行），90 秒，让对方能照着做。',
+    prep: 25, speak: 90,
+    must: [['一共', '分', '步骤'], ['第一步', '首先', '先'], ['注意', '如果', '否则']],
+    hints: ['别按系统菜单念，按对方的动作顺序讲。', '把"这里要注意"具体化成一个判断条件。'],
+    demo: '这个上线流程一共分三步。第一步，提测：在平台上建单，附上变更说明和回滚方案，找测试同学确认。第二步，审批：技术负责人和业务负责人各点一次，超过下午四点就顺延到第二天。第三步，发布：先在灰度环境放十分钟，看错误率和核心接口，没问题再全量。注意，如果灰度期间错误率超过百分之一，立刻回滚，不要犹豫。',
+    structure: true
+  },
+  {
+    day: 4, title: '表达观点：PREP', tag: '观点',
+    goal: '60 秒说清一个立场，并让人愿意接话。',
+    skill: ['P 结论：先说你赞成还是反对', 'R 理由：给 1–2 条硬理由', 'E 例子：一个具体事实；P 再收一次'],
+    phrases: ['我的观点很明确：……', '主要有两个原因：……', '举个最近的例子……', '所以我的建议是……'],
+    task: '开会表态：是否支持每周固定一次跨部门同步会？用 60 秒说明你的观点。',
+    prep: 25, speak: 60,
+    must: [['我认为', '我的观点', '结论'], ['因为', '理由'], ['比如', '举例'], ['所以', '因此']],
+    hints: ['先站队，再解释，不要"一方面另一方面"绕圈子。', '理由超过两条就容易散，砍到两条。'],
+    demo: '我支持每周固定一次同步会，但只开三十分钟。因为现在的问题不是会太多，而是信息对不齐，很多重复劳动。比如上周同一个数据口径，三个组各做了一版。所以我的建议是：每周三上午固定半小时，只同步三件事——进展、风险、需要谁配合，不汇报细节。',
+    structure: true
+  },
+  {
+    day: 5, title: '提出请求', tag: '协作',
+    goal: '把"帮个忙"说成对方能立刻执行的任务。',
+    skill: ['背景：为什么找你、这件事多重要', '动作：具体做什么、交付什么、什么时候', '余地：给对方说不或协商的空间'],
+    phrases: ['想请你在……之前帮我……', '需要你产出的是一份……', '如果时间来不及，我们可以……'],
+    task: '请隔壁组同事在周五前帮你核对一份数据，60 秒说清楚。',
+    prep: 20, speak: 60,
+    must: [['想请你', '麻烦你', '能不能'], ['周五', '之前', '时间'], ['如果', '不方便', '可以']],
+    hints: ['"帮我看看"不是请求，是谜语。', '把交付物说成一个名词：一份清单、一个结论、一次确认。'],
+    demo: '张姐，想请你帮个忙。下周我要给客户出一版续约方案，里面有个用量数据，只有你们组的后台能拉。想请你在周五下班前，帮我把华东区近三个月的活跃账号数核一遍，产出一个按行业分类的表就行。如果周五时间紧，周四先给我一个大概数也可以，我再补细节。',
+    structure: false
+  },
+  {
+    day: 6, title: '得体拒绝', tag: '边界',
+    goal: '拒绝这件事，但不让对方觉得被拒绝。',
+    skill: ['先接住：我理解这件事很重要', '明确说不：不用"我尽量"这种模糊话', '给替代：时间、人选或更小的范围'],
+    phrases: ['我理解这件事挺急的。', '这周我确实排不开，没法接。', '我能做的是……／下周我可以……'],
+    task: '同事临时拉你进一个项目，你这周已经满了。用 60 秒拒绝，并给一个替代方案。',
+    prep: 20, speak: 60,
+    must: [['理解', '知道', '明白'], ['这周', '暂时', '没办法', '不能'], ['可以', '建议', '下周']],
+    hints: ['越含糊越伤人，"我尽量"是最差的回答。', '拒绝的是这件事，不是这个人。'],
+    demo: '我理解这个项目挺急的，也知道现在缺人。但这周我手上有一个必须交付的版本，实在排不开，没法接。我能做的是：今天下午花半小时，把去年类似项目的坑跟你们过一遍；下周一开始，我可以每周投入半天帮你们看方案。这样行吗？',
+    structure: false
+  },
+  {
+    day: 7, title: '澄清与复述', tag: '对齐',
+    goal: '在点头之前，把对方的意思确认成可执行的任务。',
+    skill: ['复述事实：我理解你要的是……', '问一个具体的澄清问题（范围/标准/时间）', '约定下一步和反馈时间'],
+    phrases: ['我复述一下，确认我没理解偏。', '具体是指……还是……？', '那我周三先给你一版，可以吗？'],
+    task: '领导说"这个方案再优化一下，下周给我"。用 60 秒把要求确认清楚。',
+    prep: 20, speak: 60,
+    must: [['我理解', '你的意思', '确认'], ['具体', '是指', '哪'], ['下周', '时间', '交付']],
+    hints: ['"优化"是形容词，要把它翻译成动作。', '一次只问一个最关键的澄清问题。'],
+    demo: '好的，我复述一下确认没理解偏：您希望这版方案更聚焦在降本上，而不是再扩功能，对吗？我想确认一个具体的点：是重点补投入产出的测算，还是把实施步骤再细化？另外"下周"是指周三之前，还是周五？如果是周三，我今天先把测算框架发您看一眼。',
+    structure: false
+  },
+  {
+    day: 8, title: '阶段复盘：60 秒讲清一个项目', tag: '综合',
+    goal: '把目标、进展、卡点、请求四件事压进 60 秒。',
+    skill: ['目标：这个项目为什么存在', '进展：用一两个数字说结果', '卡点 + 请求：需要谁做什么'],
+    phrases: ['这个项目的目标是……', '目前进展到……', '现在卡在……，需要……'],
+    task: '选你手上一个项目，60 秒讲清：目标、进展、卡点、需要什么支持。',
+    prep: 30, speak: 75,
+    must: [['目标', '为了'], ['进展', '目前', '完成'], ['卡在', '问题', '风险'], ['需要', '支持', '协调']],
+    hints: ['先讲结果，再讲你做了多少事。', '卡点必须落到"谁、做什么、什么时候"。'],
+    demo: '这个项目的目标是把客户续约率从七成提到八成。目前完成了三件事：客户分层、续约提醒、季度复盘模板，续约率到了七成六。现在卡在数据上：两个系统的客户编号对不上，导致提醒发错人。需要数据组这周帮我们做一次映射，否则下个月的提醒还会出错。',
+    structure: true
+  },
+  {
+    day: 9, title: '开放式与封闭式提问', tag: '提问',
+    goal: '想收集信息时问开放题，想确认时问封闭题。',
+    skill: ['开放题：怎么、什么、哪些、为什么', '封闭题：是不是、有没有、能不能', '一次只问一个问题，问完就闭嘴'],
+    phrases: ['你平时是怎么处理……的？', '这件事现在卡在哪一步？', '所以我理解是……，对吗？'],
+    task: '访谈一位一线同事，了解他每天最耗时的环节。说出你的 3 个问题，90 秒。',
+    prep: 25, speak: 75,
+    must: [['怎么', '什么', '哪些'], ['是不是', '有没有', '会不会'], ['为什么']],
+    hints: ['连续问三个封闭题，会像审问。', '问完停三秒，对方才会说出真话。'],
+    demo: '我想了解你每天最耗时的环节，先问三个问题。第一，你每天早上到工位后，第一件事通常做什么？第二，这件事大概占你多长时间？第三，如果有一个工具能帮你省掉其中一步，你希望是哪一步，为什么？',
+    structure: false
+  },
+  {
+    day: 10, title: '连问五个为什么', tag: '根因',
+    goal: '从"表面现象"追到"可以动手改的原因"。',
+    skill: ['每一层只问一个为什么', '用事实回答，不用猜测回答', '追到"人/流程/工具"可改变的一层就停'],
+    phrases: ['为什么会出现这个情况？', '具体是因为哪一步？', '那再往下问一层，为什么会这样？'],
+    task: '一个需求总是延期。用连续追问，把根因问出来（可以自问自答）。',
+    prep: 25, speak: 90,
+    must: [['为什么'], ['因为'], ['根因', '所以', '原因']],
+    hints: ['根因不是"大家不重视"，是"没有人在周三检查"。', '每问一层，都要落到具体的人和动作。'],
+    demo: '这个需求为什么延期？因为提测晚了。为什么提测晚？因为开发中途改了两版交互。为什么改交互？因为评审时没有定稿，业务方会后还在提新想法。为什么会上没定稿？因为评审只叫了产品，没有叫业务负责人。所以根因是评审机制缺了关键人，不是开发慢。',
+    structure: true
+  },
+  {
+    day: 11, title: '确认需求：复述、边界、验收', tag: '需求',
+    goal: '把"我要一个看板"变成一份能验收的任务。',
+    skill: ['复述目标：你要解决的是哪个问题', '划边界：这次不做什么', '定验收：怎么算做完、什么时候要'],
+    phrases: ['你想解决的问题是……，对吗？', '这次先不做……，可以吗？', '怎么算验收通过？'],
+    task: '客户说"我要一个数据分析看板"。用 90 秒把需求问清并复述确认。',
+    prep: 30, speak: 90,
+    must: [['目标是', '你想', '要解决'], ['不包括', '不需要', '范围'], ['怎么算', '验收', '标准']],
+    hints: ['客户说的是方案，你要问出他背后的场景。', '边界不写下来，就会在交付前长出来。'],
+    demo: '我理解你想要一个看板，但先确认一下你真正要解决的问题：是每周例会上说不清哪个区域在掉量，对吗？如果是，我建议第一版只做三个区域、四个核心指标，不做自定义报表。验收标准是：周一早上你能在两分钟内看出哪个区域异常。范围上，这次不包括移动端和权限分级，这两块放到第二期。这样理解对吗？',
+    structure: true
+  },
+  {
+    day: 12, title: '向上提问：带着方案问', tag: '向上',
+    goal: '让领导做选择题，而不是问答题。',
+    skill: ['先说结论和你的建议', '说明你已经试过什么', '问的是决策点：要资源、要授权、还是要取舍'],
+    phrases: ['我遇到一个需要您拍板的点。', '目前有两个方案，我倾向 A。', '需要您确认的是……'],
+    task: '项目资源不足，向领导请求支持。用 90 秒，带着两个方案。',
+    prep: 30, speak: 90,
+    must: [['方案', '选项', '建议'], ['已经', '尝试', '目前'], ['需要你', '决策', '拍板']],
+    hints: ['不要只说"人不够"，要说"少一个人会晚两周"。', '领导最怕的是：你让他替你思考。'],
+    demo: '有个点需要您拍板。项目按现在的排期，测试资源差一个人，硬扛会晚两周，赶不上月底的客户演示。我已经试过借调，另外两个组这周都在上线，借不到。现在两个方案：A 是砍掉报表导出，保住月底演示，代价是客户要手工导数据；B 是加一个人，演示延到次月五号。我倾向 A，因为这次演示主要是拿意向，导出不是关键。您看哪个更合适？',
+    structure: true
+  },
+  {
+    day: 13, title: '跨部门提问：用对方的语言', tag: '协作',
+    goal: '让对方愿意答、答得出、答得准。',
+    skill: ['先说共同目标，别一上来就提需求', '用对方的语言：业务说影响，技术说改动', '问可执行的信息：谁、多久、依赖什么'],
+    phrases: ['为了……这个目标，想请你们评估一下。', '从技术上看，这个改动大概涉及哪些模块？', '需要我这边先提供什么？'],
+    task: '请技术同事评估一个改动的工期。用 90 秒问清楚。',
+    prep: 25, speak: 90,
+    must: [['目标', '为了', '业务'], ['影响', '工作量', '评估'], ['什么时候', '工期', '时间']],
+    hints: ['"这个很简单吧"是跨部门沟通的雷。', '问工期时，顺便问"最不确定的是什么"。'],
+    demo: '为了月底能支持客户按区域看数据，我们想加一个筛选维度。想请你们评估一下工作量：从技术上看，大概会动到哪几个模块？我这边能先做的是把字段和口径整理好。另外想确认，最不确定的部分是什么？如果下周三之前能给个大概工期，我就能把排期定下来。',
+    structure: false
+  },
+  {
+    day: 14, title: '反问：面试最后三问', tag: '面试',
+    goal: '问出真实信息，也让人看到你的判断力。',
+    skill: ['问团队目标：这个岗位今年最重要的一件事', '问真实挑战：现在最疼的问题是什么', '问评价标准：做到什么算好'],
+    phrases: ['这个岗位今年最需要解决的一个问题是什么？', '团队现在最大的挑战是什么？', '你们怎么判断一个人做得不错？'],
+    task: '面试最后被问"你有什么问题？"用 60 秒问三个有分量的问题。',
+    prep: 20, speak: 60,
+    must: [['团队', '岗位'], ['挑战', '难点', '问题'], ['考核', '评价', '标准']],
+    hints: ['别第一句就问薪资和加班。', '问完认真听，追问一句"能举个例子吗"。'],
+    demo: '我有三个问题。第一，这个岗位今年最需要解决的一个问题是什么？第二，团队现在最大的挑战，是人手、方向还是协作？第三，你们怎么判断一个人半年后做得不错？我想确认一下，我理解的重点和你们的期待是不是一回事。',
+    structure: true
+  },
+  {
+    day: 15, title: '阶段复盘：那次我理解错了', tag: '综合',
+    goal: '把一次返工，变成一套以后能用的提问习惯。',
+    skill: ['还原当时漏问的那个点', '说清返工的代价', '给出以后固定要问的三个问题'],
+    phrases: ['当时我以为……，其实对方要的是……', '代价是……', '以后我会固定问三句：……'],
+    task: '回顾一次"做完才发现理解错了"的经历，90 秒讲清漏问了什么、以后怎么问。',
+    prep: 30, speak: 90,
+    must: [['以为', '理解', '当时'], ['其实', '实际', '结果'], ['以后', '下次', '固定']],
+    hints: ['不要只检讨态度，要检讨流程。', '把教训写成一句能背下来的话。'],
+    demo: '当时领导说"把周报简化一下"，我以为是把字数砍一半，交了一版很短的。其实他要的是少讲过程、多讲判断，结果被打回重写，耽误了两天。以后我会固定问三句：简化是为了让谁看？砍掉哪部分？留下一句话结论可以吗？这样就不会只改形式、不改内容。',
+    structure: true
+  },
+  {
+    day: 16, title: '结论先行', tag: '汇报',
+    goal: '开口十秒，让对方知道你要他做什么。',
+    skill: ['第一句就是结论或建议', '结论里带"所以呢"：影响是什么', '再给三条支撑，每条一句话'],
+    phrases: ['结论是：……', '所以我的建议是……', '支撑这个判断的有三点。'],
+    task: '用"结论先行"汇报上周工作，60 秒。',
+    prep: 25, speak: 60,
+    must: [['结论', '总的来说', '我的建议'], ['因为', '支撑', '原因'], ['接下来', '下一步']],
+    hints: ['把"我做了 A 又做了 B"改成"因为 A，所以 B"。', '结论要具体到动作，不要"进展顺利"。'],
+    demo: '结论是：上周的客户回访可以提前一周收尾，但需要产品出一个口径确认。为什么这么说？第一，已完成八成回访，剩下的都是同一个问题。第二，客户问得最多的是计费口径，不是功能。第三，口径一确认，剩下两成一天就能打完。所以下一步，我想请产品周三前给一句话口径，我这边周四收尾。',
+    structure: true
+  },
+  {
+    day: 17, title: '三点式：任何话题都能接', tag: '结构',
+    goal: '被点名时不空白，先用结构撑住内容。',
+    skill: ['开头报结构：我想讲三点', '每点先结论后解释，一点一句', '结尾收一句：所以我的建议是'],
+    phrases: ['关于这个问题，我想讲三点。', '第一……第二……第三……', '合起来看，我的建议是……'],
+    task: '即兴题："你认为远程办公利大于弊吗？"用三点讲，90 秒。',
+    prep: 15, speak: 90,
+    must: [['第一', '首先', '一是'], ['第二', '其次', '二是'], ['第三', '最后', '三是']],
+    hints: ['三点不必完美，先保证结构完整。', '每点只讲一个意思，讲完就停。'],
+    demo: '我认为利大于弊，讲三点。第一，效率：通勤省下的两小时，可以换成整块的深度工作时间。第二，人才：招聘不再受城市限制，团队能补上以前招不到的人。第三，成本：办公室和差旅都能降。代价是协作变难，所以关键不是回不回去，而是把异步协作的规则建起来。',
+    structure: true
+  },
+  {
+    day: 18, title: '用数据讲故事', tag: '数据',
+    goal: '不念数字，让数字替你下结论。',
+    skill: ['一个数字 + 一个对比', '翻译成人话：这意味着什么', '结尾给行动，不给感慨'],
+    phrases: ['这个数字背后是……', '对比上个月，变化在……', '这意味着……，所以我建议……'],
+    task: '用 3 个数字说明上个季度的业务变化，90 秒。',
+    prep: 30, speak: 90,
+    must: [['同比', '环比', '对比'], ['意味着', '说明', '原因'], ['建议', '行动', '接下来']],
+    hints: ['数字超过三个，听众就记不住了。', '"增长了 30%"不如"每三单多了一单"。'],
+    demo: '先看三个数：季度订单同比涨了 18%，客单价掉了 6%，退款率从 3% 升到 5%。合起来意味着：我们在用降价换单量，新客多了，但质量在下降。拆开看，退款主要集中在一个低价套餐。所以建议不是继续投广告，而是把这个套餐的预期写清楚，先把退款率压回 3%。',
+    structure: true
+  },
+  {
+    day: 19, title: '进展汇报：目标、偏差、下一步', tag: '汇报',
+    goal: '让领导在 90 秒内知道：要不要出手。',
+    skill: ['用一句话说目标', '用红黄绿标状态，先报风险', '偏差要有原因和补救时间'],
+    phrases: ['整体是黄色：……', '和计划比，偏差在……', '下一步我打算……，需要您……'],
+    task: '向领导汇报项目进展，90 秒，必须包含一个风险。',
+    prep: 25, speak: 90,
+    must: [['进度', '完成', '目前'], ['风险', '偏差', '延期'], ['下一步', '计划']],
+    hints: ['好消息放后面，风险放前面。', '不要用"基本完成"这种模糊词。'],
+    demo: '整体状态黄色。目标不变，还是月底上线。目前完成八成，两个模块已联调。偏差在数据迁移：测试环境比预期慢两天，原因是历史数据脏。风险是如果周五还跑不完，上线要顺延三天。下一步我加一台机器并行跑，周五中午给您结论。需要您帮忙的是，跟数据组打个招呼，让他们优先支持。',
+    structure: true
+  },
+  {
+    day: 20, title: '坏消息怎么报', tag: '难题',
+    goal: '不铺垫、不甩锅，带着补救方案进门。',
+    skill: ['先说事实和影响，一句话讲完', '原因只说可控的部分', '补救方案 + 新的时间点'],
+    phrases: ['有个坏消息我先说：……', '影响是……', '原因在……，我已经……'],
+    task: '项目要延期两周，向领导汇报，90 秒。',
+    prep: 25, speak: 90,
+    must: [['延期', '问题', '没能'], ['原因', '因为'], ['补救', '方案', '预计']],
+    hints: ['"我尽量"和"应该没事"会让坏消息翻倍。', '进门先说结论，别先聊天气。'],
+    demo: '有个坏消息我先说：项目要延期两周，原定月底上线，现在到月中。影响是客户演示要改期，我已经让销售先沟通。原因是我们低估了老系统接口的改造量，不是某个人掉链子。补救方案有两个：一是砍掉报表模块，月底先上主流程；二是保留全部功能，接受延期。我建议第一个，今天就能定。',
+    structure: true
+  },
+  {
+    day: 21, title: '方案汇报：给选项，给建议', tag: '决策',
+    goal: '让决策者在两个好方案里选，而不是在迷雾里猜。',
+    skill: ['先给判断标准：我们按什么选', '摆 2–3 个选项和代价', '明确推荐一个，并说清风险'],
+    phrases: ['我按三个维度对比。', '方案 A 的代价是……', '我推荐 A，因为……'],
+    task: '在两个方案中做选择并说服团队，120 秒。',
+    prep: 35, speak: 120,
+    must: [['方案A', '方案一', '选项'], ['对比', '成本', '收益'], ['我建议', '推荐']],
+    hints: ['不要为了显得客观，给一堆差不多的选项。', '推荐之后，主动说这个方案的坏处。'],
+    demo: '先说判断标准：这次我们最看重的是上线时间，其次是改造成本。方案 A 是自研，三个月，人力投入大，但以后扩展方便。方案 B 是采购，六周能上，年费高，定制受限。我推荐 B：因为这次的目标是抢在竞品前上线，自研的三个月的机会成本更高。B 的风险是明年可能受制于供应商，我建议合同里锁死数据导出。',
+    structure: true
+  },
+  {
+    day: 22, title: '60 秒电梯陈述', tag: '影响',
+    goal: '让不熟悉你业务的人，记住你的价值和诉求。',
+    skill: ['用一句人话定义你在做什么', '说清对公司的价值（钱、效率、风险）', '明确提出你需要的一个支持'],
+    phrases: ['我们做的事，简单说是……', '它带来的价值是……', '我现在最需要的一个支持是……'],
+    task: '向不熟悉你业务的高管介绍你正在做的事，60 秒，讲清价值和所需支持。',
+    prep: 25, speak: 60,
+    must: [['我们做', '项目', '业务'], ['价值', '解决', '提升'], ['需要', '支持', '资源']],
+    hints: ['别用内部黑话，高管不一定懂。', '最后一句必须是具体请求，不是"希望能多关注"。'],
+    demo: '我们做的事，简单说就是让客户在第一次用到产品时就成功，而不是三个月后流失。它带来的价值是续约率，去年这块贡献了大约两成的收入增长。现在最大的瓶颈是实施人力，一个新人要跟六周才能独立。我最需要的支持，是批准两个实施岗，把上手周期压到三周。',
+    structure: false
+  },
+  {
+    day: 23, title: '答问：先接住，再回答', tag: '问答',
+    goal: '被追问时不慌，先确认问题，再给短答案。',
+    skill: ['复述或确认问题，给自己两秒', '先给一句话答案，再展开', '不会就说不会，约定回复时间'],
+    phrases: ['你问的是不是……？', '短答案是：……', '这一点我不确定，今天下班前回复你。'],
+    task: '有人问："你们这个项目为什么值得继续投钱？"用 90 秒回答。',
+    prep: 25, speak: 90,
+    must: [['好问题', '你问的是', '我理解'], ['因为', '核心', '关键'], ['如果', '风险', '投入']],
+    hints: ['别急着解释，先确认对方真正担心什么。', '答案超过三句，就没人记得住。'],
+    demo: '你问的其实是投入产出比，对吧？短答案是：值得，但要看下一个季度。因为项目已经跑通两个客户，单客户交付成本降了四成。如果现在停，前面投入的沉没，客户也要重新找方案。风险在于规模化还需要一次产品化改造，我建议再投一个季度，用三个客户验证，再决定要不要继续。',
+    structure: true
+  },
+  {
+    day: 24, title: '先复述，再回应', tag: '倾听',
+    goal: '让对方觉得"你听懂了"，沟通才真正开始。',
+    skill: ['复述事实 + 情绪：听起来你……', '确认：我理解得对吗', '问需求：你是想让我听，还是想要建议'],
+    phrases: ['听起来，你最难受的是……', '我理解得对吗？', '你现在是想让我听听，还是一起想办法？'],
+    task: '朋友向你抱怨工作太累。先复述再回应，90 秒。',
+    prep: 20, speak: 90,
+    must: [['听起来', '你的意思是', '我理解'], ['你是说', '对吗', '确认'], ['需要我', '你想', '我可以']],
+    hints: ['急着给建议，是最常见的"没听懂"。', '复述情绪，比复述事实更有用。'],
+    demo: '听起来，你最累的不是加班本身，是每次加班都在补别人没对齐的信息，对吗？而且你说了几次，好像也没人当回事。我先不急着给建议，想确认一下：你现在是想让我听听，还是想一起想想怎么跟老板提？',
+    structure: false
+  },
+  {
+    day: 25, title: '给反馈：情境、行为、影响', tag: '反馈',
+    goal: '说事实不说人品，让对方知道改什么。',
+    skill: ['S 情境：具体时间地点', 'B 行为：只说你看到的', 'I 影响：对事的影响 + 具体期待'],
+    phrases: ['上周三的评审会……', '我注意到……', '这导致……，我希望……'],
+    task: '给同事一个改进反馈：他开会总迟到。90 秒。',
+    prep: 25, speak: 90,
+    must: [['上周', '昨天', '当时'], ['我注意到', '你', '具体'], ['影响', '导致'], ['希望', '建议']],
+    hints: ['"你总是"会让人立刻防御。', '反馈最后要落到一个可执行的小改变。'],
+    demo: '上周三的评审会，我想跟你说个事。我注意到会议开始十分钟你才到，当时正在过你的部分，大家停下来等了一会儿。这导致后面两个议题被压缩，有两个问题没讨论完。我希望下次如果会前赶不上，你在群里说一声，我们先把顺序调一下，这样谁都不耽误。',
+    structure: true
+  },
+  {
+    day: 26, title: '冲突协商：从立场到利益', tag: '协商',
+    goal: '不争谁对，先找双方真正要的东西。',
+    skill: ['先说共同目标，把对立变成并肩', '把立场翻译成利益：你担心什么', '给交换条件，而不是让步'],
+    phrases: ['我们的目标其实是一样的：……', '我担心的是……，你需要的是……', '如果我……，你能不能……'],
+    task: '和同事争抢同一个开发资源，协商出一个方案，120 秒。',
+    prep: 30, speak: 120,
+    must: [['我们都', '目标', '共同'], ['我的顾虑', '担心', '需要'], ['交换', '折中', '这样']],
+    hints: ['重复对方的原话，能让火气降一半。', '不要一次让到底，留一个交换条件。'],
+    demo: '我们先对齐一下：我们都希望这个季度把转化率做上去，只是路径不一样。你担心的是排期被打乱，我担心的是错过活动窗口。那这样行不行：这个资源前两周归你，保证你的版本按时发；后两周归我，我把活动往后挪三天。作为交换，你那边上线后帮我盯一下埋点，这样我们都不用返工。',
+    structure: true
+  },
+  {
+    day: 27, title: '说服：先讲对方的收益', tag: '影响',
+    goal: '少讲你的产品，多讲对方的好处。',
+    skill: ['开头讲对方的收益，不讲解功能', '主动说出对方的顾虑，并回应', '给一个小到无法拒绝的第一步'],
+    phrases: ['对你来说，最直接的好处是……', '你可能会担心……', '先试一周，不行就退回来。'],
+    task: '说服习惯手写记录的同事试用一个新工具，90 秒。',
+    prep: 25, speak: 90,
+    must: [['对你', '帮你', '省'], ['担心', '顾虑', '可能'], ['先试', '一周', '小步']],
+    hints: ['"这个很好用"是说服的反面。', '把改变的成本降到接近零。'],
+    demo: '对你来说，最直接的好处是搜记录不用翻本子，客户名字一输就出来。你可能担心迁移麻烦，我先把最近三个月的记录帮你导进去，十分钟搞定。先试一周，你只在新客户上用，不顺手就退回来，本子照记。这样你几乎没有成本，试一下？',
+    structure: false
+  },
+  {
+    day: 28, title: '线上会怎么发言', tag: '会议',
+    goal: '在看不见表情的会议里，让发言被听见、被记住。',
+    skill: ['先报名字，再说话', '一次只讲一个点，控制 30 秒', '用"我补充/我确认/我提议"开头'],
+    phrases: ['我是 XX，我补充一点。', '我确认一下刚才的结论。', '我提议我们先定……'],
+    task: '在 10 人线上会中发言，表达一个不同意见，60 秒。',
+    prep: 20, speak: 60,
+    must: [['我补充', '我说一下', '我确认'], ['不同', '但是', '不过'], ['建议', '提议']],
+    hints: ['线上会沉默三秒，就会被当成没意见。', '不同意见要先接住对方的合理部分。'],
+    demo: '我是李然，我补充一点，也是一个不同意见。刚才说月底全量上线，我担心测试时间不够。不过如果只上主流程，我觉得可以。我提议：月底先上两个核心模块，剩下的下个月中，这样风险可控，也不影响演示。',
+    structure: false
+  },
+  {
+    day: 29, title: '即兴发言：被点名不慌', tag: '即兴',
+    goal: '用一个小结构，撑住 60 秒的临场表达。',
+    skill: ['感谢 + 一个现场细节', '回顾一件事或讲一个观点', '一句祝福或一个行动收尾'],
+    phrases: ['谢谢，我没想到会被点名。', '我印象最深的是……', '希望接下来……'],
+    task: '被临时点名，在部门庆功会上说 3 句话，60 秒。',
+    prep: 15, speak: 60,
+    must: [['感谢', '谢谢'], ['记得', '回顾', '当时'], ['希望', '祝愿', '期待']],
+    hints: ['即兴不等于随便，先想好第一句和最后一句。', '讲一个具体的小画面，比讲大道理动人。'],
+    demo: '谢谢，没想到会被点名。我印象最深的是上周三晚上十点，大家还在群里对一个数据，明明可以第二天再说，但没人先走。这个项目能成，靠的就是这股劲儿。希望接下来我们能把这个状态留住，也希望大家都能早点下班。',
+    structure: true
+  },
+  {
+    day: 30, title: '综合演练：3 分钟业务汇报', tag: '毕业',
+    goal: '把 30 天练的东西合起来：结论、结构、数据、请求。',
+    skill: ['30 秒结论 + 三个重点 + 一个请求', '每个重点配一个数字或例子', '结尾留一句能被记住的话'],
+    phrases: ['我先说结论。', '支撑这个结论的有三点。', '我需要的一个支持是……', '一句话收尾：……'],
+    task: '用 3 分钟向管理层汇报你的季度工作：结论、3 个重点、1 个请求。',
+    prep: 60, speak: 180,
+    must: [['结论', '汇报'], ['第一', '第二', '第三'], ['请求', '支持', '建议']],
+    hints: ['录音回听，删掉所有"然后""就是"。', '三分钟不是讲满三分钟，是留出提问时间。'],
+    demo: '我先说结论：这个季度我们把客户续约率从七成提到七成六，超额完成，但增长主要来自老客户，新客是短板。支撑这个结论的有三点。第一，老客户续约提升，靠的是分层运营，Top20 客户做到了每月一次复盘。第二，新客转化下降两个点，原因是试用期没人跟进。第三，团队效率提升，人均服务客户数从 18 到 25。所以我请求下季度加一个新人，专门做试用期跟进，预计能把新客转化拉回原来的水平。一句话收尾：老客户让我们活下来，新客户决定我们明年长多大。',
+    structure: true
+  }
+];
+
+</script>
+<script>
+/* 开口练 · 30 天口语训练 —— 应用逻辑 */
+(function () {
+  'use strict';
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var KEY = 'kaikou30.v1';
+  var LESSONS = window.LESSONS, MODULES = window.MODULES, WARMUPS = window.WARMUPS;
+
+  /* ---------------- state ---------------- */
+  var S = load();
+  var SS = null;          // session state
+  var lastTab = 'today';
+  var overlay = $('#overlay'), view = $('#view'), topbar = $('#top');
+  var warmIdx = new Date().getDate() % WARMUPS.length;
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var o = JSON.parse(raw);
+        if (!Array.isArray(o.records)) o.records = [];
+        return o;
+      }
+    } catch (e) {}
+    return { records: [], createdAt: Date.now() };
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  /* ---------------- utils ---------------- */
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function mmss(sec) {
+    sec = Math.max(0, Math.round(sec));
+    return pad(Math.floor(sec / 60)) + ':' + pad(sec % 60);
+  }
+  function dateStr(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function todayStr() { return dateStr(new Date()); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function lessonOf(day) { return LESSONS.filter(function (l) { return l.day === day; })[0]; }
+  function doneDays() {
+    var m = {}; S.records.forEach(function (r) { m[r.day] = true; }); return m;
+  }
+  function nextDay() {
+    var d = doneDays();
+    for (var i = 0; i < LESSONS.length; i++) if (!d[LESSONS[i].day]) return LESSONS[i].day;
+    return 0;
+  }
+  function streak() {
+    var days = {}; S.records.forEach(function (r) { days[r.date] = true; });
+    var list = Object.keys(days).sort().reverse();
+    if (!list.length) return 0;
+    var t = todayStr(), y = dateStr(new Date(Date.now() - 864e5));
+    if (list[0] !== t && list[0] !== y) return 0;
+    var n = 1, d = new Date(list[0] + 'T00:00:00');
+    for (var i = 1; i < list.length; i++) {
+      d.setDate(d.getDate() - 1);
+      if (list[i] === dateStr(d)) n++; else break;
+    }
+    return n;
+  }
+  function toast(msg) {
+    var t = $('#toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._tm); t._tm = setTimeout(function () { t.classList.remove('show'); }, 2200);
+  }
+  function speak(text) {
+    if (!('speechSynthesis' in window)) { toast('当前浏览器不支持朗读'); return; }
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN'; u.rate = 0.95;
+    var vs = window.speechSynthesis.getVoices().filter(function (v) { return /zh|Chinese/i.test(v.lang + v.name); });
+    if (vs.length) u.voice = vs[0];
+    window.speechSynthesis.speak(u);
+  }
+
+  /* ---------------- top / router ---------------- */
+  function renderTop(active) {
+    var done = Object.keys(doneDays()).length;
+    topbar.innerHTML =
+      '<div class="brand"><span class="mark">口</span>开口练</div>' +
+      '<div class="daychip">' + (done ? '已练 ' + done + ' / 30 天' : '30 天 · 每天 10 分钟') + '</div>';
+    $('#tabbar a').forEach(function (a) {
+      a.classList.toggle('on', a.getAttribute('data-tab') === active);
+    });
+  }
+
+  function hideOverlay() {
+    overlay.hidden = true; overlay.innerHTML = '';
+  }
+  function go(h) {
+    if (('#' + h) === location.hash) route();
+    else location.hash = h;
+  }
+
+  function route() {
+    var h = (location.hash || '#today').replace(/^#/, '');
+    if (h.indexOf('session/') === 0) {
+      var day = parseInt(h.split('/')[1], 10) || 1;
+      if (!SS || SS.day !== day) startSession(day);
+      else { overlay.hidden = false; renderSession(); }
+      return;
+    }
+    if (SS) { cleanupSession(); SS = null; }
+    if (h.indexOf('record/') === 0) { openRecord(h.slice(7)); return; }
+    hideOverlay();
+    var tab = ['today', 'course', 'records', 'guide'].indexOf(h) >= 0 ? h : 'today';
+    lastTab = tab;
+    renderTop(tab);
+    if (tab === 'today') renderToday();
+    else if (tab === 'course') renderCourse();
+    else if (tab === 'records') renderRecords();
+    else renderGuide();
+  }
+  window.addEventListener('hashchange', route);
+
+  /* ---------------- today ---------------- */
+  function renderToday() {
+    var d = nextDay(), done = doneDays(), cnt = Object.keys(done).length;
+    var todayDone = S.records.filter(function (r) { return r.date === todayStr(); }).length;
+    var html = '';
+
+    if (!d) {
+      html += '<div class="hero"><div class="kicker">30 / 30</div>' +
+        '<h1>30 天全部练完了</h1>' +
+        '<div class="goal">接下来不用追新内容了：挑一节最难的，用 1.5 倍目标时间再讲一遍；或者打开「记录」，回听第一天的自己。</div>' +
+        '<div class="meta"><span class="pill">建议：每周复盘 2 次</span></div>' +
+        '<a class="cta" href="#course">回到课程，选一节重练 →</a></div>';
+    } else {
+      var L = lessonOf(d);
+      html += '<div class="hero">' +
+        '<div class="kicker">DAY ' + pad(d) + ' / 30 · 建议 10 分钟</div>' +
+        '<h1>' + esc(L.title) + '</h1>' +
+        '<div class="goal">' + esc(L.goal) + '</div>' +
+        '<div class="meta"><span class="pill">准备 ' + L.prep + ' 秒</span><span class="pill">开口 ' + L.speak + ' 秒</span><span class="pill">' + esc(L.tag) + '</span></div>' +
+        '<a class="cta" href="#session/' + d + '">开始今天的练习 →</a>' +
+        '<div class="progressline"><i style="width:' + (cnt / 30 * 100).toFixed(1) + '%"></i></div>' +
+        '<div class="progtext"><span>已完成 ' + cnt + ' / 30</span><span>' + (todayDone ? '今天已练 ' + todayDone + ' 次' : '今天还没开口') + '</span></div>' +
+        '</div>';
+    }
+
+    if (todayDone) {
+      html += '<div class="card tight" style="display:flex;align-items:center;gap:12px;background:var(--green-soft);border-color:#d5e4dc">' +
+        '<div style="font-size:22px">✓</div><div class="grow"><div style="font-weight:700;font-size:14px">今天已经开过口了</div>' +
+        '<div class="tiny muted">练完就停，比一次练到累更有效。想加练可以再来一轮。</div></div></div>';
+    }
+
+    var W = WARMUPS[warmIdx];
+    html += '<div class="sec-title"><h2>开口热身 · 1 分钟</h2><span>先把嘴皮子活动开</span></div>' +
+      '<div class="card">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+      '<b style="font-size:14px">' + esc(W.name) + '</b>' +
+      '<button class="speakbtn" data-act="warm-next">换一个 ↻</button></div>' +
+      '<div style="font-size:16px;line-height:1.85;color:#3d4438">' + esc(W.text) + '</div>' +
+      '<div class="tiny muted" style="margin-top:8px">' + esc(W.tip) + '</div>' +
+      '</div>';
+
+    html += '<div class="sec-title"><h2>训练地图</h2><span>' + cnt + ' / 30 节</span></div><div class="card" style="padding:8px 16px">';
+    MODULES.forEach(function (m) {
+      var ls = LESSONS.filter(function (l) {
+        return (m.id === 1 && l.day <= 8) || (m.id === 2 && l.day >= 9 && l.day <= 15) ||
+               (m.id === 3 && l.day >= 16 && l.day <= 23) || (m.id === 4 && l.day >= 24);
+      });
+      var c = ls.filter(function (l) { return done[l.day]; }).length;
+      html += '<div class="row" style="cursor:pointer" onclick="location.hash=\'#course\'">' +
+        '<div class="dnum" style="background:' + m.color + '1a;color:' + m.color + '">' + m.id + '</div>' +
+        '<div class="grow"><div class="t" style="font-size:14px">' + esc(m.title) + '<span class="tag">' + esc(m.sub) + '</span></div>' +
+        '<div class="s">' + c + ' / ' + ls.length + ' 节完成</div></div>' +
+        '<div class="score-mini">' + Math.round(c / ls.length * 100) + '%</div></div>';
+    });
+    html += '</div>';
+
+    html += '<div class="card tight" style="background:#fbf8f0;border-style:dashed">' +
+      '<div class="tiny" style="line-height:1.8;color:#6d6250"><b>怎么练最有效：</b>先看技巧 → 想 20 秒 → 开口说 → 回听录音 → 给自己打分 → 写一句复盘。不要背示范，用自己的话讲。</div></div>';
+
+    view.innerHTML = html;
+  }
+
+  /* ---------------- course ---------------- */
+  function renderCourse() {
+    var done = doneDays();
+    var html = '<div style="display:flex;align-items:flex-end;justify-content:space-between;margin:6px 4px 14px">' +
+      '<div><h2 style="font-size:20px">30 天课程</h2><div class="tiny muted" style="margin-top:2px">由易到难，每天一节，每节 10 分钟</div></div>' +
+      '<button class="btn soft" style="padding:8px 12px;font-size:13px" data-act="random">随机抽一节</button></div>';
+
+    MODULES.forEach(function (m) {
+      var ls = LESSONS.filter(function (l) {
+        return (m.id === 1 && l.day <= 8) || (m.id === 2 && l.day >= 9 && l.day <= 15) ||
+               (m.id === 3 && l.day >= 16 && l.day <= 23) || (m.id === 4 && l.day >= 24);
+      });
+      var c = ls.filter(function (l) { return done[l.day]; }).length;
+      html += '<div class="mod"><div class="modhead">' +
+        '<div class="bar" style="background:' + m.color + '"></div>' +
+        '<div><h3>' + esc(m.title) + '</h3><p>' + esc(m.sub) + '</p></div>' +
+        '<div class="range">' + c + '/' + ls.length + '</div></div>' +
+        '<div class="lessons">';
+      ls.forEach(function (l) {
+        var recs = S.records.filter(function (r) { return r.day === l.day; });
+        var best = recs.length ? Math.max.apply(null, recs.map(function (r) { return r.score || 0; })) : 0;
+        html += '<a class="row" href="#session/' + l.day + '">' +
+          '<div class="dnum ' + (done[l.day] ? 'done' : '') + '">' + (done[l.day] ? '✓' : pad(l.day)) + '</div>' +
+          '<div class="grow"><div class="t">' + esc(l.title) + '<span class="tag">' + esc(l.tag) + '</span></div>' +
+          '<div class="s">' + l.speak + ' 秒 · ' + esc(l.goal.slice(0, 22)) + '…</div></div>' +
+          (done[l.day] ? '<div class="score-mini">' + best + '</div>' : '<div style="color:#c3c7bb">›</div>') +
+          '</a>';
+      });
+      html += '</div></div>';
+    });
+    view.innerHTML = html;
+  }
+
+  /* ---------------- records ---------------- */
+  function renderRecords() {
+    var rs = S.records;
+    var days = {}; rs.forEach(function (r) { days[r.date] = true; });
+    var totalMin = Math.round(rs.reduce(function (a, r) { return a + (r.dur || 0); }, 0) / 60);
+    var avg = rs.length ? Math.round(rs.reduce(function (a, r) { return a + (r.score || 0); }, 0) / rs.length) : 0;
+
+    var html = '<div style="margin:6px 4px 14px"><h2 style="font-size:20px">练习记录</h2>' +
+      '<div class="tiny muted" style="margin-top:2px">回听比多练更重要</div></div>' +
+      '<div class="statrow" style="margin-bottom:10px">' +
+      '<div class="stat"><b>' + Object.keys(days).length + '</b><span>打卡天数</span></div>' +
+      '<div class="stat"><b>' + streak() + '</b><span>连续天数</span></div>' +
+      '<div class="stat"><b>' + rs.length + '</b><span>练习次数</span></div>' +
+      '<div class="stat"><b>' + avg + '</b><span>平均分</span></div></div>';
+
+    // 7 天柱状
+    var bars = '', max = 1, data = [];
+    for (var i = 6; i >= 0; i--) {
+      var dt = new Date(Date.now() - i * 864e5), ds = dateStr(dt);
+      var sec = rs.filter(function (r) { return r.date === ds; }).reduce(function (a, r) { return a + (r.dur || 0); }, 0);
+      data.push({ ds: ds, sec: sec, label: ['日', '一', '二', '三', '四', '五', '六'][dt.getDay()] });
+      if (sec > max) max = sec;
+    }
+    data.forEach(function (d) {
+      var h = d.sec ? Math.max(6, Math.round(d.sec / max * 70)) : 3;
+      bars += '<div class="barcol"><div class="bar ' + (d.sec ? 'has' : '') + '" style="height:' + h + 'px"></div><div class="d">' + d.label + '</div></div>';
+    });
+    html += '<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">' +
+      '<b style="font-size:14px">最近 7 天</b><span class="tiny muted">累计 ' + Math.round(rs.filter(function (r) {
+        return r.ts > Date.now() - 7 * 864e5;
+      }).reduce(function (a, r) { return a + (r.dur || 0); }, 0) / 60) + ' 分钟</span></div>' +
+      '<div class="bars">' + bars + '</div></div>';
+
+    if (!rs.length) {
+      html += '<div class="empty"><div class="ico">◌</div>还没有记录<br><span class="tiny">完成第一次练习后，这里会留下你的声音和分数</span></div>';
+    } else {
+      html += '<div class="sec-title"><h2>最近练习</h2><span>点开可看转写与复盘</span></div><div class="card" style="padding:4px 16px">';
+      rs.slice(0, 30).forEach(function (r) {
+        var sc = r.score == null ? '—' : r.score;
+        html += '<div class="rec" data-act="open-rec" data-id="' + r.id + '" style="cursor:pointer">' +
+          '<div class="sc ' + ((r.score || 0) < 60 ? 'low' : '') + '">' + sc + '</div>' +
+          '<div class="info"><b>' + esc(r.title) + '</b><span>' + r.date.slice(5) + ' · 第 ' + r.day + ' 天 · ' + mmss(r.dur) + ' · ' + (r.chars || 0) + ' 字</span></div>' +
+          '<div style="color:#c3c7bb">›</div></div>';
+      });
+      html += '</div>';
+    }
+    view.innerHTML = html;
+  }
+
+  /* ---------------- guide ---------------- */
+  function renderGuide() {
+    var insecure = location.protocol !== 'https:' && !/localhost|127\.0\.0\.1/.test(location.hostname);
+    view.innerHTML =
+      '<div style="margin:6px 4px 14px"><h2 style="font-size:20px">使用指南</h2>' +
+      '<div class="tiny muted" style="margin-top:2px">先读这 2 分钟，练习效率会不一样</div></div>' +
+
+      (insecure ? '<div class="card" style="background:#fbeeec;border-color:#efd3ce"><b style="font-size:14px;color:#a34a3e">当前地址无法使用麦克风</b>' +
+        '<div class="tiny" style="margin-top:6px;color:#8a5a50;line-height:1.7">手机浏览器只允许 HTTPS 页面调用麦克风。请改用电脑上给出的 <b>https://</b> 地址打开（证书提示选「继续访问」）。计时、自评、打卡不受影响。</div></div>' : '') +
+
+      '<div class="card guide">' +
+      '<h3>一次练习的 5 个步骤</h3>' +
+      '<ol><li><b>看技巧</b>：只记 2–3 个要点，不要背。</li>' +
+      '<li><b>想 20 秒</b>：想好第一句和三个关键词就够了。</li>' +
+      '<li><b>开口说</b>：按目标时长说，卡住也别停，用"我先说结论"接上。</li>' +
+      '<li><b>回听 + 打分</b>：听自己的录音，按四个维度打 1–5 分。</li>' +
+      '<li><b>写一句复盘</b>：今天最大的问题是什么，下次改一个点。</li></ol>' +
+      '<div class="callout">只改一个点。30 天里每天修一个小毛病，比每天推翻重来有效得多。</div>' +
+      '</div>' +
+
+      '<div class="card guide">' +
+      '<h3>分数怎么来的</h3>' +
+      '<p>系统根据语音转写自动算四项：<b>时长</b>（是否说够）、<b>语速</b>（180–300 字/分钟最舒服）、<b>口头禅</b>（嗯/那个/然后呢）、<b>关键词</b>（这节必须说到的信息）和<b>结构</b>（开头—分点—收尾）。</p>' +
+      '<p class="tiny muted" style="margin-top:6px">分数只用来对比你自己，不用追求满分。转写有误差时，点「手动修改转写」再分析。</p>' +
+      '</div>' +
+
+      '<div class="card guide">' +
+      '<h3>怎么练最省时间</h3>' +
+      '<ul><li>通勤路上：只看技巧卡，心里默讲一遍。</li>' +
+      '<li>午休 10 分钟：完整练一节 + 回听。</li>' +
+      '<li>开会前 2 分钟：抽一节"即兴发言"热身。</li>' +
+      '<li>每周日：翻记录，挑分数最低的一节重练。</li></ul>' +
+      '</div>' +
+
+      '<div class="card guide">' +
+      '<h3>手机使用提示</h3>' +
+      '<ul><li>Android Chrome / Edge：支持实时转写，效果最好。</li>' +
+      '<li>iPhone Safari：可能不支持实时转写，但可以计时、录音、自评、手动输入。</li>' +
+      '<li>第一次会弹麦克风授权，选「允许」。</li>' +
+      '<li>把页面「添加到主屏幕」，下次像 App 一样打开。</li></ul>' +
+      '</div>' +
+
+      '<div class="card guide">' +
+      '<h3>数据</h3>' +
+      '<p class="tiny muted">所有记录只保存在这台设备的浏览器里，不上传服务器。</p>' +
+      '<div style="display:flex;gap:9px;margin-top:12px;flex-wrap:wrap">' +
+      '<button class="btn ghost" style="flex:1;font-size:14px" data-act="export">导出备份</button>' +
+      '<button class="btn ghost" style="flex:1;font-size:14px" data-act="import">导入备份</button>' +
+      '<button class="btn danger" style="flex:1;font-size:14px" data-act="reset">清空数据</button></div>' +
+      '<input type="file" id="importFile" accept="application/json" style="display:none">' +
+      '</div>' +
+
+      '<div class="center tiny muted" style="padding:14px 0 4px">开口练 · 30 天口语训练 · 本地版</div>';
+  }
+
+  /* ---------------- session ---------------- */
+  function startSession(day) {
+    var L = lessonOf(day);
+    if (!L) { location.hash = '#course'; return; }
+    if (SS) cleanupSession();
+    SS = {
+      day: day, lesson: L, step: 'brief', phase: 'idle',
+      text: '', finalText: '', interim: '', dur: 0, result: null,
+      self: { goal: 0, structure: 0, fluent: 0, natural: 0 },
+      note: '', audioUrl: null, recActive: false, returnTab: lastTab
+    };
+    overlay.hidden = false;
+    renderSession();
+    window.scrollTo(0, 0);
+  }
+
+  function cleanupSession() {
+    stopTimers();
+    stopMic();
+    if (SS && SS.audioUrl) { try { URL.revokeObjectURL(SS.audioUrl); } catch (e) {} }
+    if (window.speechSynthesis && window.speechSynthesis.cancel) window.speechSynthesis.cancel();
+  }
+
+  function closeSession() {
+    cleanupSession();
+    var back = (SS && SS.returnTab) || lastTab || 'today';
+    SS = null;
+    hideOverlay();
+    go(back);
+  }
+
+  function stopTimers() {
+    if (!SS) return;
+    if (SS.timer) { clearInterval(SS.timer); SS.timer = null; }
+    if (SS.prepTimer) { clearInterval(SS.prepTimer); SS.prepTimer = null; }
+  }
+
+  function headHTML(stepIdx) {
+    var L = SS.lesson;
+    return '<div class="sess"><div class="sesshead">' +
+      '<button class="iconbtn" data-act="close" aria-label="返回"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>' +
+      '<div class="grow"><div class="step">第 ' + SS.day + ' 天 · ' + esc(L.tag) + '</div>' +
+      '<div class="ttl">' + esc(L.title) + '</div></div>' +
+      '<div class="tiny muted">' + (stepIdx + 1) + '/3</div></div>' +
+      '<div class="steps">' + [0, 1, 2].map(function (i) {
+        return '<i class="' + (i <= stepIdx ? 'on' : '') + '"></i>';
+      }).join('') + '</div>';
+  }
+
+  function renderSession() {
+    if (!SS) return;
+    var L = SS.lesson, html = '';
+    if (SS.step === 'brief') html = briefHTML(L);
+    else if (SS.step === 'speak') html = speakHTML(L);
+    else html = resultHTML(L);
+    overlay.innerHTML = html;
+    overlay.scrollTop = 0;
+    if (SS.step === 'result') bindResult();
+  }
+
+  function briefHTML(L) {
+    return headHTML(0) +
+      '<h2 class="big">' + esc(L.title) + '</h2>' +
+      '<div class="goalbox">' + esc(L.goal) + '</div>' +
+
+      '<div class="skillbox"><h4>这一节练什么</h4><ul>' +
+      L.skill.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul></div>' +
+
+      '<div class="skillbox"><h4>可以直接用的句式</h4>' +
+      L.phrases.map(function (p) {
+        var parts = p.split('：');
+        return '<div class="phrase"><b>' + (parts.length > 1 ? esc(parts[0]) + '：' : '·') + '</b><span>' + esc(parts.length > 1 ? parts.slice(1).join('：') : p) + '</span></div>';
+      }).join('') + '</div>' +
+
+      '<div class="taskbox"><div class="lb">今天的题目</div>' + esc(L.task) + '</div>' +
+
+      '<details class="hint"><summary>卡住了？看 2 条提示</summary>' +
+      L.hints.map(function (h) { return '<p>· ' + esc(h) + '</p>'; }).join('') + '</details>' +
+
+      '<details class="hint"><summary>想先听一遍示范？</summary>' +
+      '<div class="demo" style="margin-top:9px;background:#fff"><div class="lb">示范答案（不要背，学结构）' +
+      '<button class="speakbtn" data-act="demo">▶ 听</button></div>' + esc(L.demo) + '</div></details>' +
+
+      '<div class="sessfoot"><button class="btn primary block" data-act="to-speak">准备好了，开始 →</button>' +
+      '<div class="center tiny muted" style="margin-top:10px">准备 ' + L.prep + ' 秒 · 开口 ' + L.speak + ' 秒</div></div>' +
+      '</div>';
+  }
+
+  function speakHTML(L) {
+    var body;
+    if (SS.phase === 'prep') {
+      body = '<div class="timerwrap"><div class="timer" id="timer">' + mmss(SS.prepLeft || L.prep) + '</div>' +
+        '<div class="timersub">准备时间 · 想好第一句，别写稿</div></div>' +
+        '<div class="taskbox"><div class="lb">题目</div>' + esc(L.task) + '</div>' +
+        '<details class="hint" open><summary>三个关键词（说出来就算达标）</summary>' +
+        L.must.map(function (g) { return '<p>· ' + esc(g[0]) + '</p>'; }).join('') + '</details>' +
+        '<div class="sessfoot"><button class="btn primary block" data-act="skip-prep">不等了，直接开始说</button></div>';
+    } else if (SS.phase === 'ready') {
+      body = '<div class="timerwrap"><div class="timer" id="timer">' + mmss(L.speak) + '</div>' +
+        '<div class="timersub">目标时长 · 说满它，卡住也别停</div></div>' +
+        '<div class="taskbox"><div class="lb">题目</div>' + esc(L.task) + '</div>' +
+        '<div class="sessfoot"><button class="btn primary block" data-act="start-speak">🎙 开始说（点一下开始计时）</button>' +
+        '<div class="center" style="margin-top:12px"><button class="tiny muted" data-act="textmode" style="text-decoration:underline">没有麦克风？直接进入文字分析</button></div>' +
+        '<div class="center tiny muted" style="margin-top:6px">' + (hasSR() ? '会实时转写成文字，结束后自动分析' : '当前浏览器不支持实时转写，会录音供你回听') + '</div></div>';
+    } else if (SS.phase === 'recording') {
+      body = '<div class="timerwrap"><div class="timer" id="timer">00:00</div>' +
+        '<div class="timersub" id="timersub">目标 ' + mmss(L.speak) + ' · 正在录</div>' +
+        '<div class="bartarget" style="margin-top:12px"><i id="bar"></i></div></div>' +
+        '<div class="live" id="live"></div>' +
+        '<div class="recwrap"><button class="recbtn stop pulse" data-act="stop-speak" aria-label="结束">' +
+        '<span class="dot"></span></button>' +
+        '<div class="tiny muted">说完了点方块 · 最长 ' + mmss(Math.round(L.speak * 1.8)) + ' 自动结束</div></div>' +
+        '<div class="sessfoot"></div>';
+    } else {
+      body = '';
+    }
+    return headHTML(1) + body + '</div>';
+  }
+
+  function resultHTML(L) {
+    var R = SS.result;
+    if (!R) return headHTML(2) + '<div class="empty">没有数据</div></div>';
+    var score = R.score;
+    var deg = score == null ? 0 : score;
+    var color = score == null ? '#c9c4b6' : (score >= 85 ? '#2f6f5e' : score >= 70 ? '#3f8a72' : score >= 55 ? '#b8792f' : '#b4483c');
+    var html = headHTML(2) +
+      '<div class="scorewrap">' +
+      '<div class="ring" style="background:conic-gradient(' + color + ' ' + (deg * 3.6) + 'deg,#eee9dd 0)">' +
+      '<div class="num" style="color:' + color + '">' + (score == null ? '—' : score) + '<small>' + (score == null ? '' : ' 分') + '</small></div></div>' +
+      '<div class="scoretxt"><h3>' + (R.grade || '未分析') + '</h3><p>' + esc(R.advice || '') + '</p></div></div>' +
+
+      (R.chars === 0 && R.dur > 0 ? '<div class="card tight" style="background:#fbeeec;border-color:#efd3ce"><div class="tiny" style="color:#8a5a50;line-height:1.7"><b>没有识别到文字。</b>可能是麦克风未授权，或浏览器不支持转写。你仍然可以回听录音，也可以在下面手动补上你说的内容再分析。</div></div>' : '') +
+
+      '<div class="metrics">' +
+      metric('开口时长', R.dur ? mmss(R.dur) : '—', '目标 ' + L.speak + ' 秒') +
+      metric('语速', R.speed || '—', '字/分钟', speedComment(R.speed)) +
+      metric('口头禅', R.fillerTotal + ' 次', R.fillerTotal > 0 ? '每百字 ' + (R.chars ? (R.fillerTotal / R.chars * 100).toFixed(1) : 0) + ' 次' : '很干净') +
+      metric('关键信息', R.hitCount + ' / ' + L.must.length, R.hitCount === L.must.length ? '都说到了' : '还差 ' + (L.must.length - R.hitCount) + ' 项') +
+      '</div>' +
+
+      '<div class="card tight"><div class="tiny muted" style="margin-bottom:8px">关键信息覆盖</div><div class="chips">' +
+      L.must.map(function (g, i) {
+        return '<span class="chipx ' + (R.hits[i] ? 'hit' : 'miss') + '">' + (R.hits[i] ? '✓ ' : '· ') + esc(g[0]) + '</span>';
+      }).join('') + '</div>' +
+      '<div class="tiny muted" style="margin:14px 0 8px">结构信号</div><div class="chips">' +
+      [['开头', R.struct[0]], ['分点', R.struct[1]], ['收尾', R.struct[2]]].map(function (x) {
+        return '<span class="chipx ' + (x[1] ? 'hit' : '') + '">' + (x[1] ? '✓ ' : '· ') + x[0] + '</span>';
+      }).join('') + '</div>' +
+      (R.fillerList.length ? '<div class="tiny muted" style="margin:14px 0 8px">出现最多的口头禅</div><div class="chips">' +
+        R.fillerList.slice(0, 5).map(function (f) { return '<span class="chipx miss">' + esc(f[0]) + ' ×' + f[1] + '</span>'; }).join('') + '</div>' : '') +
+      '</div>' +
+
+      '<div id="audioSlot">' + (SS.audioUrl ? '<div class="card tight"><div style="display:flex;align-items:center;gap:10px"><b style="font-size:13px">回听录音</b><audio controls src="' + SS.audioUrl + '" style="flex:1;height:36px"></audio></div><div class="tiny muted" style="margin-top:6px">只听两件事：开头是否啰嗦、有没有"嗯/那个"。</div></div>' : '') + '</div>' +
+
+      '<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b style="font-size:13px">你的转写</b><span class="tiny muted">' + R.chars + ' 字</span></div>' +
+      '<div class="transcript">' + (SS.text ? esc(SS.text) : '<span class="muted">（空）</span>') + '</div>' +
+      '<details class="hint" style="margin:10px 0 0"><summary>转写不准？手动修改</summary>' +
+      '<textarea class="note" id="manualText" style="margin-top:9px" placeholder="把你说的话打出来或粘贴进来，再点重新分析">' + esc(SS.text) + '</textarea>' +
+      '<button class="btn soft" style="margin-top:8px;width:100%" data-act="reanalyze">用这段文字重新分析</button></details></div>' +
+
+      '<div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><b style="font-size:13px">给自己打分</b><span class="tiny muted">1 = 差，5 = 好</span></div>' +
+      selfRow('goal', '目标达成', '题目要求的信息说全了吗') +
+      selfRow('structure', '结构清楚', '开头、分点、收尾清楚吗') +
+      selfRow('fluent', '表达流畅', '停顿和口头禅多不多') +
+      selfRow('natural', '状态自然', '像平时说话，不像背稿') +
+      '<textarea class="note" id="note" style="margin-top:12px" placeholder="写一句复盘：今天最大的问题是什么？下次只改一个点。">' + esc(SS.note) + '</textarea>' +
+      '<div class="selfnote">这句话会存进记录，下次练之前先看一眼。</div></div>' +
+
+      '<div class="sessfoot">' +
+      '<button class="btn primary block" data-act="save">保存并打卡</button>' +
+      '<div style="display:flex;gap:9px;margin-top:9px">' +
+      '<button class="btn ghost" style="flex:1" data-act="again">再练一次</button>' +
+      '<button class="btn ghost" style="flex:1" data-act="close">先不保存</button></div></div>' +
+      '</div>';
+    return html;
+  }
+
+  function metric(k, v, unit, comment) {
+    return '<div class="metric"><div class="k">' + k + '</div><div class="v">' + v + (unit ? '<small>' + unit + '</small>' : '') + '</div>' +
+      (comment ? '<div class="c">' + esc(comment) + '</div>' : '') + '</div>';
+  }
+  function selfRow(key, label, desc) {
+    var n = SS.self[key] || 0;
+    return '<div class="selfrow"><div><div class="lb">' + label + '</div><div class="tiny muted" style="font-size:11px">' + desc + '</div></div>' +
+      '<div class="stars">' + [1, 2, 3, 4, 5].map(function (i) {
+        return '<button class="star ' + (i <= n ? 'on' : '') + '" data-act="rate" data-dim="' + key + '" data-val="' + i + '">' + i + '</button>';
+      }).join('') + '</div></div>';
+  }
+  function speedComment(sp) {
+    if (!sp) return '未识别到语音';
+    if (sp < 90) return '偏慢，可能停顿多';
+    if (sp < 150) return '略慢，可以更连贯';
+    if (sp <= 300) return '很舒服的节奏';
+    if (sp <= 340) return '略快，注意停顿';
+    return '太快了，听的人会累';
+  }
+
+  /* ---------------- analysis ---------------- */
+  var FILLERS = ['嗯', '呃', '额', '那个', '就是说', '然后呢', '其实', '反正', '基本上', '怎么说呢', '你知道'];
+  var ST_OPEN = ['先说结论', '结论是', '我的观点', '我认为', '我想讲', '今天想', '我汇报', '我想请你', '简单说', '我理解', '听起来', '有个', '谢谢', '各位'];
+  var ST_POINT = ['第一', '第二', '第三', '首先', '其次', '最后', '一是', '二是', '三点'];
+  var ST_CLOSE = ['所以', '因此', '总结', '以上', '下一步', '建议', '希望', '谢谢'];
+
+  function hasSR() {
+    return !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+  }
+
+  function analyze(text, dur, L) {
+    var clean = text.replace(/[\s，。！？、；：""''（）()《》…—\-,.!?;:]/g, '');
+    var chars = clean.length;
+    var speed = dur > 0 ? Math.round(chars / (dur / 60)) : 0;
+    var fl = {}, total = 0;
+    FILLERS.forEach(function (f) {
+      var c = (text.split(f).length - 1);
+      if (c > 0) { fl[f] = c; total += c; }
+    });
+    var fillerList = Object.keys(fl).sort(function (a, b) { return fl[b] - fl[a]; }).map(function (k) { return [k, fl[k]]; });
+    var hits = L.must.map(function (g) {
+      return g.some(function (k) { return text.indexOf(k) >= 0; });
+    });
+    var hitCount = hits.filter(Boolean).length;
+    var struct = [ST_OPEN.some(function (k) { return text.indexOf(k) >= 0; }) ? 1 : 0,
+                  ST_POINT.some(function (k) { return text.indexOf(k) >= 0; }) ? 1 : 0,
+                  ST_CLOSE.some(function (k) { return text.indexOf(k) >= 0; }) ? 1 : 0];
+
+    var score = null, grade = '再练一次', advice = '点下面的「手动修改转写」，把你说的话补进来，才能算分。';
+    if (chars >= 10 && dur > 0) {
+      var ratio = dur / L.speak;
+      var sDur = ratio < 0.75 ? Math.max(4, 25 * ratio / 0.75)
+        : ratio <= 1.35 ? 25 : Math.max(12, 25 - (ratio - 1.35) * 12);
+
+      var sSpeed;
+      if (speed >= 150 && speed <= 300) sSpeed = 20;
+      else if (speed >= 120 && speed < 150) sSpeed = 15;
+      else if (speed > 300 && speed <= 340) sSpeed = 15;
+      else if (speed >= 90) sSpeed = 9;
+      else sSpeed = 5;
+
+      var rate = chars ? total / chars * 100 : 0;
+      var sFill = rate <= 1.5 ? 15 : rate <= 3 ? 12 : rate <= 5 ? 8 : rate <= 8 ? 4 : 2;
+
+      var sKey = hitCount / L.must.length * 25;
+      var sStruct = (struct[0] + struct[1] + struct[2]) * 5;
+
+      score = Math.max(0, Math.min(100, Math.round(sDur + sSpeed + sFill + sKey + sStruct)));
+      grade = score >= 85 ? '很稳，可以加难度了' : score >= 70 ? '达标，继续保持' : score >= 55 ? '及格线，再抠一个点' : '再来一次，先别急';
+
+      var issues = [];
+      if (sKey < 16) issues.push('关键信息漏了 ' + (L.must.length - hitCount) + ' 项，对照题目补全');
+      if (sDur < 16) issues.push('只说了 ' + Math.round(ratio * 100) + '% 的时长，内容没展开');
+      if (rate > 4) issues.push('口头禅 ' + total + ' 次，用停顿代替"嗯/那个"');
+      if (speed > 340) issues.push('语速偏快，重点句后面停一秒');
+      if (speed > 0 && speed < 150) issues.push('语速偏慢，先把结构想好再开口');
+      if (sStruct <= 5) issues.push('结构感弱，用"我先说结论 + 第一/第二/最后"撑起来');
+      advice = issues.length ? issues.slice(0, 2).join('；') + '。' : '节奏和信息都不错，下次试着说得更短。';
+    }
+
+    return {
+      chars: chars, speed: speed, dur: dur, fillerTotal: total, fillerList: fillerList,
+      hits: hits, hitCount: hitCount, struct: struct.map(Boolean), score: score, grade: grade, advice: advice
+    };
+  }
+
+  /* ---------------- mic ---------------- */
+  var recog = null, mediaRec = null, chunks = [], stream = null;
+
+  function startMic() {
+    // 录音（用于回听）
+    try {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(function (st) {
+          if (!SS || SS.phase !== 'recording') { st.getTracks().forEach(function (t) { t.stop(); }); return; }
+          stream = st;
+          try {
+            mediaRec = new MediaRecorder(st);
+            chunks = [];
+            mediaRec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+            mediaRec.onstop = function () {
+              if (!chunks.length || !SS) return;
+              var blob = new Blob(chunks, { type: chunks[0].type || 'audio/webm' });
+              SS.audioUrl = URL.createObjectURL(blob);
+              var slot = document.getElementById('audioSlot');
+              if (slot) {
+                slot.innerHTML = '<div class="card tight"><div style="display:flex;align-items:center;gap:10px">' +
+                  '<b style="font-size:13px">回听录音</b><audio controls src="' + SS.audioUrl + '" style="flex:1;height:36px"></audio></div>' +
+                  '<div class="tiny muted" style="margin-top:6px">只听两件事：开头是否啰嗦、有没有"嗯/那个"。</div></div>';
+              }
+            };
+            mediaRec.start();
+          } catch (e) {}
+        }).catch(function () { /* 没有麦克风权限也不影响计时 */ });
+      }
+    } catch (e) {}
+
+    // 实时转写
+    if (!hasSR()) return;
+    try {
+      var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recog = new SR();
+      recog.lang = 'zh-CN';
+      recog.continuous = true;
+      recog.interimResults = true;
+      recog.onresult = function (e) {
+        var interim = '';
+        for (var i = e.resultIndex; i < e.results.length; i++) {
+          var r = e.results[i];
+          if (r.isFinal) SS.finalText += r[0].transcript;
+          else interim += r[0].transcript;
+        }
+        SS.interim = interim;
+        SS.text = (SS.finalText + interim).trim();
+        var live = $('#live');
+        if (live) {
+          live.innerHTML = esc(SS.finalText) + (interim ? '<span class="interim">' + esc(interim) + '</span>' : '');
+          live.scrollTop = live.scrollHeight;
+        }
+      };
+      recog.onerror = function (e) {
+        if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+          SS.recActive = false;
+          toast('麦克风未授权：仍可计时和录音，结束后手动输入文字');
+        } else if (e.error === 'network') {
+          SS.recActive = false;
+          toast('语音识别服务连不上：可以先用录音+手动转写');
+        }
+      };
+      recog.onend = function () {
+        if (SS && SS.recActive) { try { recog.start(); } catch (e) {} }
+      };
+      recog.start();
+    } catch (e) {}
+  }
+
+  function stopMic() {
+    if (SS) SS.recActive = false;
+    if (recog) { try { recog.onend = null; recog.stop(); } catch (e) {} recog = null; }
+    if (mediaRec && mediaRec.state !== 'inactive') { try { mediaRec.stop(); } catch (e) {} }
+    mediaRec = null;
+    if (stream) { try { stream.getTracks().forEach(function (t) { t.stop(); }); } catch (e) {} stream = null; }
+  }
+
+  /* ---------------- session flow ---------------- */
+  function toSpeak() {
+    SS.step = 'speak';
+    SS.phase = 'prep';
+    SS.prepLeft = SS.lesson.prep;
+    renderSession();
+    startPrepTimer();
+  }
+
+  function startPrepTimer() {
+    stopTimers();
+    SS.prepTimer = setInterval(function () {
+      SS.prepLeft--;
+      var el = $('#timer');
+      if (el) el.textContent = mmss(SS.prepLeft);
+      if (SS.prepLeft <= 0) {
+        clearInterval(SS.prepTimer); SS.prepTimer = null;
+        SS.phase = 'ready';
+        renderSession();
+      }
+    }, 1000);
+  }
+
+  function startSpeak() {
+    var L = SS.lesson;
+    SS.step = 'speak'; SS.phase = 'recording';
+    SS.text = ''; SS.finalText = ''; SS.interim = '';
+    SS.startTs = Date.now();
+    SS.dur = 0;
+    renderSession();
+    SS.recActive = true;
+    startMic();
+    var maxSec = Math.round(L.speak * 1.8);
+    SS.timer = setInterval(function () {
+      var el = $('#timer'), bar = $('#bar');
+      SS.dur = (Date.now() - SS.startTs) / 1000;
+      if (el) {
+        el.textContent = mmss(SS.dur);
+        el.classList.toggle('over', SS.dur > L.speak);
+      }
+      if (bar) bar.style.width = Math.min(100, SS.dur / L.speak * 100) + '%';
+      if (SS.dur >= maxSec) stopSpeak();
+    }, 200);
+  }
+
+  function stopSpeak() {
+    if (!SS || SS.phase !== 'recording') return;
+    SS.dur = Math.min((Date.now() - SS.startTs) / 1000, SS.lesson.speak * 2);
+    SS.phase = 'result';
+    SS.step = 'result';
+    stopTimers();
+    SS.recActive = false;
+    stopMic();
+    if (navigator.vibrate) { try { navigator.vibrate(60); } catch (e) {} }
+    SS.result = analyze(SS.text, SS.dur, SS.lesson);
+    renderSession();
+  }
+
+  function reanalyze() {
+    var ta = $('#manualText');
+    if (ta) SS.text = ta.value.trim();
+    if (!SS.dur && SS.text) {
+      SS.dur = Math.max(10, Math.round(SS.text.replace(/\s/g, '').length / 3.2));
+    }
+    SS.result = analyze(SS.text, SS.dur, SS.lesson);
+    var note = $('#note'); if (note) SS.note = note.value;
+    renderSession();
+    toast('已重新分析');
+  }
+
+  function bindResult() {
+    var note = $('#note');
+    if (note) note.addEventListener('input', function () { SS.note = note.value; });
+    var mt = $('#manualText');
+    if (mt) mt.addEventListener('input', function () { /* 保存到 SS 由 reanalyze 处理 */ });
+  }
+
+  function saveRecord() {
+    var R = SS.result;
+    if (!R) return;
+    var noteEl = $('#note'); if (noteEl) SS.note = noteEl.value;
+    var rec = {
+      id: 'r' + Date.now() + Math.floor(Math.random() * 1000),
+      day: SS.day, title: SS.lesson.title, date: todayStr(), ts: Date.now(),
+      dur: Math.round(SS.dur * 10) / 10, chars: R.chars, speed: R.speed,
+      fillerTotal: R.fillerTotal, fillerList: R.fillerList,
+      hits: R.hits, hitCount: R.hitCount, struct: R.struct,
+      score: R.score, self: SS.self, note: SS.note, transcript: SS.text
+    };
+    S.records.unshift(rec);
+    save();
+    toast(rec.score == null ? '已打卡（未评分）' : '已打卡 · ' + rec.score + ' 分');
+    var back = SS.returnTab || lastTab || 'today';
+    cleanupSession();
+    SS = null;
+    hideOverlay();
+    go(back);
+  }
+
+  /* ---------------- record detail ---------------- */
+  function openRecord(id) {
+    var r = S.records.filter(function (x) { return x.id === id; })[0];
+    if (!r) return;
+    var L = lessonOf(r.day) || { must: [] };
+    var color = (r.score || 0) >= 85 ? '#2f6f5e' : (r.score || 0) >= 70 ? '#3f8a72' : (r.score || 0) >= 55 ? '#b8792f' : '#b4483c';
+    overlay.hidden = false;
+    overlay.innerHTML = '<div class="sess">' +
+      '<div class="sesshead"><button class="iconbtn" data-act="close-rec"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>' +
+      '<div class="grow"><div class="step">' + r.date + ' · 第 ' + r.day + ' 天</div><div class="ttl">' + esc(r.title) + '</div></div></div>' +
+      '<div class="scorewrap"><div class="ring" style="background:conic-gradient(' + color + ' ' + ((r.score || 0) * 3.6) + 'deg,#eee9dd 0)">' +
+      '<div class="num" style="color:' + color + '">' + (r.score == null ? '—' : r.score) + '<small>' + (r.score == null ? '' : ' 分') + '</small></div></div>' +
+      '<div class="scoretxt"><h3>' + (r.note ? '你的复盘' : '这次练习') + '</h3><p>' + esc(r.note || '没有写复盘。下次留一句：只改一个点。') + '</p></div></div>' +
+      '<div class="metrics">' +
+      metric('开口时长', mmss(r.dur), '目标 ' + (L.speak || '') + ' 秒') +
+      metric('语速', r.speed || '—', '字/分钟', speedComment(r.speed)) +
+      metric('口头禅', r.fillerTotal + ' 次', '') +
+      metric('关键信息', r.hitCount + ' / ' + (L.must ? L.must.length : 3), '') +
+      '</div>' +
+      '<div class="card tight"><div class="tiny muted" style="margin-bottom:8px">自评</div><div class="chips">' +
+      [['目标达成', r.self && r.self.goal], ['结构清楚', r.self && r.self.structure], ['表达流畅', r.self && r.self.fluent], ['状态自然', r.self && r.self.natural]].map(function (x) {
+        return '<span class="chipx hit">' + x[0] + ' ' + (x[1] || 0) + '/5</span>';
+      }).join('') + '</div></div>' +
+      '<div class="card"><b style="font-size:13px">当时的转写</b><div class="transcript" style="margin-top:8px">' + (r.transcript ? esc(r.transcript) : '<span class="muted">（没有转写）</span>') + '</div></div>' +
+      '<div class="sessfoot"><button class="btn ghost block" data-act="del-rec" data-id="' + r.id + '">删除这条记录</button></div></div>';
+  }
+
+  /* ---------------- events ---------------- */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-act]');
+    if (!el) return;
+    var act = el.getAttribute('data-act');
+    if (act === 'warm-next') { warmIdx = (warmIdx + 1) % WARMUPS.length; renderToday(); }
+    else if (act === 'random') {
+      var d = LESSONS[Math.floor(Math.random() * LESSONS.length)].day;
+      location.hash = '#session/' + d;
+    }
+    else if (act === 'close') closeSession();
+    else if (act === 'demo') { if (SS) speak(SS.lesson.demo); }
+    else if (act === 'to-speak') toSpeak();
+    else if (act === 'skip-prep') { stopTimers(); SS.phase = 'ready'; renderSession(); }
+    else if (act === 'start-speak') startSpeak();
+    else if (act === 'textmode') {
+      stopTimers();
+      SS.dur = 0;
+      SS.step = 'result'; SS.phase = 'result';
+      SS.result = analyze('', SS.dur, SS.lesson);
+      renderSession();
+    }
+    else if (act === 'stop-speak') stopSpeak();
+    else if (act === 'again') {
+      var day = SS.day;
+      cleanupSession();
+      SS = null;
+      startSession(day);
+    }
+    else if (act === 'save') saveRecord();
+    else if (act === 'reanalyze') reanalyze();
+    else if (act === 'rate') {
+      var dim = el.getAttribute('data-dim'), val = +el.getAttribute('data-val');
+      SS.self[dim] = (SS.self[dim] === val) ? 0 : val;
+      var row = el.closest('.selfrow');
+      $('.star', row).forEach(function (s) {
+        s.classList.toggle('on', +s.getAttribute('data-val') <= SS.self[dim]);
+      });
+    }
+    else if (act === 'open-rec') { location.hash = '#record/' + el.getAttribute('data-id'); }
+    else if (act === 'close-rec') { go(lastTab || 'records'); }
+    else if (act === 'del-rec') {
+      S.records = S.records.filter(function (r) { return r.id !== el.getAttribute('data-id'); });
+      save(); overlay.hidden = true; overlay.innerHTML = ''; renderRecords(); toast('已删除');
+    }
+    else if (act === 'export') {
+      var blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = '开口练-备份-' + todayStr() + '.json';
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 3000);
+    }
+    else if (act === 'import') { var f = $('#importFile'); if (f) f.click(); }
+    else if (act === 'reset') {
+      if (confirm('会清空所有练习记录和分数，确定吗？')) {
+        S = { records: [], createdAt: Date.now() };
+        save(); renderTop('guide'); renderGuide(); toast('已清空');
+      }
+    }
+  });
+
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.id === 'importFile') {
+      var file = e.target.files && e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        try {
+          var o = JSON.parse(reader.result);
+          if (!o || !Array.isArray(o.records)) throw new Error('bad');
+          S.records = o.records.concat(S.records);
+          S.records.sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
+          save(); renderGuide(); toast('已导入 ' + o.records.length + ' 条记录');
+        } catch (err) { toast('文件格式不对'); }
+      };
+      reader.readAsText(file);
+    }
+  });
+
+  // 返回键/切后台时，若在录音则结束
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden && SS && SS.phase === 'recording') stopSpeak();
+  });
+
+  /* ---------------- boot ---------------- */
+  window.__analyze = analyze;   // 便于自动化检查评分逻辑
+  if (!location.hash) location.hash = '#today';
+  route();
+})();
+
+</script>
+</body>
+</html>
