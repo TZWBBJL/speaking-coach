@@ -644,7 +644,7 @@ window.LESSONS = [
   'use strict';
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
-  var $ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var KEY = 'kaikou30.v1';
   var LESSONS = window.LESSONS, MODULES = window.MODULES, WARMUPS = window.WARMUPS;
 
@@ -723,7 +723,7 @@ window.LESSONS = [
     topbar.innerHTML =
       '<div class="brand"><span class="mark">口</span>开口练</div>' +
       '<div class="daychip">' + (done ? '已练 ' + done + ' / 30 天' : '30 天 · 每天 10 分钟') + '</div>';
-    $('#tabbar a').forEach(function (a) {
+    $$('#tabbar a').forEach(function (a) {
       a.classList.toggle('on', a.getAttribute('data-tab') === active);
     });
   }
@@ -1458,7 +1458,7 @@ window.LESSONS = [
       var dim = el.getAttribute('data-dim'), val = +el.getAttribute('data-val');
       SS.self[dim] = (SS.self[dim] === val) ? 0 : val;
       var row = el.closest('.selfrow');
-      $('.star', row).forEach(function (s) {
+      $$('.star', row).forEach(function (s) {
         s.classList.toggle('on', +s.getAttribute('data-val') <= SS.self[dim]);
       });
     }
@@ -1466,7 +1466,7 @@ window.LESSONS = [
     else if (act === 'close-rec') { go(lastTab || 'records'); }
     else if (act === 'del-rec') {
       S.records = S.records.filter(function (r) { return r.id !== el.getAttribute('data-id'); });
-      save(); overlay.hidden = true; overlay.innerHTML = ''; renderRecords(); toast('已删除');
+      save(); toast('已删除'); go('records');
     }
     else if (act === 'export') {
       var blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
@@ -1513,6 +1513,7 @@ window.LESSONS = [
   if (!location.hash) location.hash = '#today';
   route();
 })();
+
 
 </script>
 </body>
